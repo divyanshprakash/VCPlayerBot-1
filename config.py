@@ -51,18 +51,18 @@ else:
 
 class Config:
     #Telegram API Stuffs
-    ADMIN = os.environ.get("ADMINS", '')
+    ADMIN = os.environ.get("ADMINS", '691224603')
     SUDO = [int(admin) for admin in (ADMIN).split()] # Exclusive for heroku vars configuration.
     ADMINS = [int(admin) for admin in (ADMIN).split()] #group admins will be appended to this list.
-    API_ID = int(os.environ.get("API_ID", ''))
-    API_HASH = os.environ.get("API_HASH", "")
-    BOT_TOKEN = os.environ.get("BOT_TOKEN", "")     
-    SESSION = os.environ.get("SESSION_STRING", "")
+    API_ID = int(os.environ.get("API_ID", '6239579'))
+    API_HASH = os.environ.get("API_HASH", "0a6bb5be3bec0cb8ed7c408a45f02f4c")
+    BOT_TOKEN = os.environ.get("BOT_TOKEN", "2024770645:AAHyIIFxShxGa4SwDV9ztOmk_gc3zxsFEU4")     
+    SESSION = os.environ.get("SESSION_STRING", "BQC5r3Ba-sP_H6OHNG-CrvkRqWHW_iqu63j1AU76OV0mcX9N3nkGQNrw94aSO0p4PSnAysd4d-hM65bYacXrHLKg3Om7C53QgcGylEaZn1Ikd4S5APodNu1v3J9bL2-aBMMcLBFlGr1wEaEUHV9ycogMSzJLhjyuaGMqWnK7dhkgoL7vB7xGFkWg11vwzH6M4TAZ8kWX9MAsYXBmRJfR9Wr1zoa-9z1-qQGCdQkpm4Bs_36fPGWo4qyobINnqqzE4Pr0_NEIN4lFdNZ_O9RV-SeAb0hr_ftUflpyh86y9b8J9Hexy89uFchfRfl1r3wWlFjIbMd-EjV_2CYudD3Ivl7LYaBlPwA")
     BOT_USERNAME=None
 
     #Stream Chat and Log Group
-    CHAT = int(os.environ.get("CHAT", ""))
-    LOG_GROUP=os.environ.get("LOG_GROUP", "")
+    CHAT = int(os.environ.get("CHAT", "-1001255333726"))
+    LOG_GROUP=os.environ.get("LOG_GROUP", "-1001255333726")
     if LOG_GROUP:
         LOG_GROUP=int(LOG_GROUP)
     else:
