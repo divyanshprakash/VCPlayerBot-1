@@ -67,7 +67,7 @@ async def add_to_playlist(_, message: Message):
                 type="query"
                 ysearch=query
         else:
-            await message.reply_text("You Didn't gave me anything to play.Reply to a video or a youtube link.")
+            await message.reply_text("You Didn't gave me anything to play.Reply to a video or a youtube link✅.")
             return
     user=f"[{message.from_user.first_name}](tg://user?id={message.from_user.id})"
     if type=="video":
@@ -78,11 +78,11 @@ async def add_to_playlist(_, message: Message):
         await msg.edit("Media added to playlist")
     if type=="youtube" or type=="query":
         if type=="youtube":
-            msg = await message.reply_text("⚡️ **Fetching Video From YouTube...**")
+            msg = await message.reply_text("⚡️ **Fetching Video From YouTube...Pls Wait**")
             url=yturl
         elif type=="query":
             try:
-                msg = await message.reply_text("⚡️ **Fetching Video From YouTube...**")
+                msg = await message.reply_text("⚡️ **Fetching Video From YouTube...Pls Wait**")
                 ytquery=ysearch
                 results = YoutubeSearch(ytquery, max_results=1).to_dict()
                 url = f"https://youtube.com{results[0]['url_suffix']}"
@@ -116,7 +116,7 @@ async def add_to_playlist(_, message: Message):
         Config.playlist.append(data)
         await msg.edit(f"[{title}]({url}) added to playist", disable_web_page_preview=True)
     if len(Config.playlist) == 1:
-        m_status = await msg.edit("Downloading and Processing...")
+        m_status = await msg.edit("Downloading and Processing✅...")
         await download(Config.playlist[0], m_status)
         await play()
         await m_status.delete()
@@ -134,9 +134,9 @@ async def add_to_playlist(_, message: Message):
 @Client.on_message(filters.command(["leave", f"leave@{Config.BOT_USERNAME}"]) & admin_filter)
 async def leave_voice_chat(_, m: Message):
     if not Config.CALL_STATUS:
-        return await m.reply("Not joined any voicechat.")
+        return await m.reply("Nothing is Streaming!🚫.")
     await leave_call()
-    await m.reply("Succesfully left videochat.")
+    await m.reply("Succesfully left vc.")
 
 
 
@@ -174,7 +174,7 @@ async def yt_play_list(client, m: Message):
         status=await m.reply("Trying to get details from playlist.")
         n=await import_play_list(ytplaylist)
         if not n:
-            await status.edit("Errors Occured while importing playlist.")
+            await status.edit("Some Error Occured while importing playlist.")
             return
         if Config.SHUFFLE:
             await shuffle_playlist()
@@ -186,7 +186,7 @@ async def yt_play_list(client, m: Message):
         else:
             await status.delete()
     else:
-        await m.reply("No playList file given. Use @GetPlayListBot  or search for a playlist in @DumpPlaylist to get a playlist file.")
+        await m.reply("No playList file Was given. Please Use @GetPlayListBot  or search for a playlist in @DumpPlaylist to get a playlist file.")
 
 
 @Client.on_message(filters.command(["stream", f"stream@{Config.BOT_USERNAME}"]) & admin_filter & (filters.chat(Config.CHAT) | filters.private))
@@ -197,7 +197,7 @@ async def stream(client, m: Message):
         text = m.text.split(" ", 1)
         link = text[1]
     else:
-        return await m.reply("Provide a link to stream!")
+        return await m.reply("Pls Provide a Valid link to stream!")
     regex = r"^(?:https?:\/\/)?(?:www\.)?youtu\.?be(?:\.com)?\/?.*(?:watch|embed)?(?:.*v=|v\/|\/)([\w\-_]+)\&?"
     match = re.match(regex,link)
     if match:
